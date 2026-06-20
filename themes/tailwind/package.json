@@ -1,0 +1,19 @@
+{
+  "name": "pma-theme-tailwind",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modern Tailwind CSS theme with light/dark mode for phpMyAdmin",
+  "author": "arifhas",
+  "license": "MIT",
+  "scripts": {
+    "build": "tailwindcss -i tailwind.css -o css/theme.css --minify",
+    "build:expanded": "tailwindcss -i tailwind.css -o css/theme.css",
+    "build:rtl": "tailwindcss -i tailwind.css -o css/theme.rtl.css --minify",
+    "build:all": "npm run build && npm run build:rtl",
+    "watch": "tailwindcss -i tailwind.css -o css/theme.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/cli": "^4.0.0"
+  }
+}

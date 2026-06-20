@@ -1,0 +1,377 @@
+/**
+ * phpMyAdmin-specific selector overrides.
+ *
+ * These target the actual ids/classes that phpMyAdmin emits — verified against
+ * the 5.2.x templates and other shipped themes. They sit OUTSIDE @layer so
+ * they win over Tailwind's utilities without needing !important everywhere.
+ */
+
+/* =========================================================================
+   Page layout
+   ========================================================================= */
+#page_content,
+#maincontainer {
+  background-color: var(--pma-bg);
+  color: var(--pma-text);
+  padding: 1rem 1.25rem;
+}
+
+#page_nav_icons img {
+  filter: var(--pma-icon-filter, none);
+}
+
+/* =========================================================================
+   Top logo / header
+   ========================================================================= */
+img.logo,
+#imlogo,
+#logo {
+  filter: var(--pma-icon-filter, none);
+}
+
+#serverinfo,
+.serverinfo,
+#serverChoice {
+  background-color: var(--pma-surface);
+  border-bottom: 1px solid var(--pma-border);
+  color: var(--pma-text-soft);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.875rem;
+}
+#serverinfo a {
+  color: var(--pma-primary);
+}
+#serverinfo .separator,
+#serverinfo img {
+  filter: var(--pma-icon-filter, none);
+  opacity: 0.6;
+}
+
+/* =========================================================================
+   Main horizontal menu (top tabs)
+   ========================================================================= */
+#topmenu,
+.nav_p,
+ul#topmenu {
+  background-color: var(--pma-bg);
+  border-bottom: 1px solid var(--pma-border);
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.125rem;
+  list-style: none;
+}
+#topmenu li,
+.nav_p li {
+  margin: 0;
+  padding: 0;
+}
+#topmenu a,
+.nav_p a {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-md);
+  color: var(--pma-text-soft);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+#topmenu a:hover,
+.nav_p a:hover {
+  background-color: var(--pma-surface-2);
+  color: var(--pma-text);
+}
+#topmenu a.tabactive,
+#topmenu .active a {
+  background-color: var(--pma-primary-soft);
+  color: var(--pma-primary);
+}
+
+/* =========================================================================
+   Left navigation panel (database/table tree)
+   ========================================================================= */
+#pma_navigation,
+#pma_navigation_content {
+  background-color: var(--pma-surface);
+  border-inline-end: 1px solid var(--pma-border);
+  color: var(--pma-text);
+}
+#pma_navigation_header {
+  background-color: var(--pma-surface-2);
+  border-bottom: 1px solid var(--pma-border);
+  padding: 0.5rem 0.75rem;
+}
+#pma_navigation_header a,
+#pma_navigation_header button {
+  color: var(--pma-text-soft);
+}
+#pma_navigation_tree a {
+  color: var(--pma-text-soft);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+}
+#pma_navigation_tree a:hover {
+  background-color: var(--pma-surface-2);
+  color: var(--pma-text);
+  text-decoration: none;
+}
+#pma_navigation_tree a.active,
+#pma_navigation_tree a.selected {
+  background-color: var(--pma-primary-soft);
+  color: var(--pma-primary);
+}
+#pma_navigation_tree img,
+#pma_navigation i,
+#navipager img {
+  filter: var(--pma-icon-filter, none);
+}
+
+/* The fast-filter search box in the navigation */
+#pma_navigation_filters input,
+#pma_navigation_search {
+  background-color: var(--pma-bg);
+  border: 1px solid var(--pma-border-strong);
+  color: var(--pma-text);
+}
+
+/* Resizer handle */
+#pma_navigation_resizer {
+  background-color: var(--pma-border);
+}
+#pma_navigation_resizer:hover {
+  background-color: var(--pma-primary);
+}
+
+/* =========================================================================
+   Secondary tabs (Structure / SQL / Search / Insert / Export ...)
+   ========================================================================= */
+.tabserv,
+ul.tabserv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.125rem;
+  border-bottom: 1px solid var(--pma-border);
+  padding: 0;
+  margin: 0 0 0.75rem;
+  list-style: none;
+}
+.tabserv li {
+  margin: 0;
+}
+.tabserv a {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  color: var(--pma-text-soft);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.tabserv a:hover {
+  color: var(--pma-primary);
+  background-color: var(--pma-surface);
+}
+.tabserv a.active {
+  background-color: var(--pma-bg);
+  border-color: var(--pma-border);
+  color: var(--pma-primary);
+}
+
+/* =========================================================================
+   SQL query box
+   ========================================================================= */
+.sqlquery,
+.sqlOuter,
+#sqlquery,
+#sqlquerycontainer {
+  background-color: var(--pma-surface);
+  border: 1px solid var(--pma-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+}
+
+/* Inline code in query results */
+.sqlhighlight,
+.sql-preview {
+  background-color: var(--pma-surface-2);
+  border: 1px solid var(--pma-border);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--pma-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* keyword highlight tokens from SqlParser */
+.sql-hl-keyword { color: var(--pma-primary); font-weight: 600; }
+.sql-hl-backtick { color: var(--pma-text-soft); }
+.sql-hl-number   { color: var(--pma-info); }
+.sql-hl-string   { color: var(--pma-success); }
+.sql-hl-comment  { color: var(--pma-muted); font-style: italic; }
+.sql-hl-variable { color: var(--pma-warning); }
+
+/* =========================================================================
+   SQL console (bottom dock)
+   ========================================================================= */
+#pma_console,
+.pma_console {
+  background-color: var(--pma-surface);
+  border-top: 1px solid var(--pma-border);
+  color: var(--pma-text);
+}
+#pma_console .console_header,
+.pma_console .header {
+  background-color: var(--pma-surface-2);
+  border-bottom: 1px solid var(--pma-border);
+  padding: 0.35rem 0.75rem;
+}
+#pma_console .message,
+.pma_console .message {
+  background-color: var(--pma-bg);
+  border: 1px solid var(--pma-border);
+  border-radius: var(--radius-sm);
+  margin: 0.25rem 0;
+  padding: 0.4rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+#pma_console .message.success {
+  border-inline-start: 3px solid var(--pma-success);
+}
+#pma_console .message.error {
+  border-inline-start: 3px solid var(--pma-danger);
+}
+
+/* =========================================================================
+   Designer canvas
+   ========================================================================= */
+#designer_canvas,
+#designer_page_content {
+  background-color: var(--pma-surface-2);
+}
+#designer .table-panel,
+.designer-table {
+  background-color: var(--pma-bg);
+  border: 1px solid var(--pma-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--pma-shadow-md);
+  color: var(--pma-text);
+}
+#designer .table-panel h2,
+.designer-table .title {
+  background-color: var(--pma-primary);
+  color: var(--pma-on-primary);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* =========================================================================
+   Settings / preferences panels
+   ========================================================================= */
+.fieldset,
+fieldset.group {
+  background-color: var(--pma-bg);
+  border: 1px solid var(--pma-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.fieldset legend,
+.group legend {
+  color: var(--pma-primary);
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+/* Group toggle rows in settings */
+.tabscreensrv {
+  background-color: var(--pma-surface);
+}
+
+/* =========================================================================
+   Tooltips / inline help
+   ========================================================================= */
+#tooltip,
+.tooltip,
+.hint {
+  background-color: var(--pma-text);
+  color: var(--pma-bg);
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  box-shadow: var(--pma-shadow-md);
+}
+
+/* =========================================================================
+   Modal overlays (PMA uses jQuery UI Dialog; see jquery-ui.css for full
+   dialog styling — these target a couple of internal wrappers).
+   ========================================================================= */
+#overlay,
+.pma-overlay {
+  background-color: rgb(0 0 0 / 0.5);
+}
+
+/* =========================================================================
+   Login form
+   ========================================================================= */
+body#loginform,
+#loginform .container {
+  background-color: var(--pma-surface);
+}
+#loginform form,
+form.login {
+  background-color: var(--pma-bg);
+  border: 1px solid var(--pma-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--pma-shadow-lg);
+  max-width: 26rem;
+  margin: 2rem auto;
+}
+
+/* =========================================================================
+   Status / server-info badges
+   ========================================================================= */
+.serverstatus,
+.status {
+  color: var(--pma-text-soft);
+}
+
+/* =========================================================================
+   Print
+   ========================================================================= */
+@media print {
+  #pma_navigation,
+  #topmenu,
+  #pma_console,
+  #page_nav_icons,
+  .pma-theme-toggle,
+  #footer_references {
+    display: none !important;
+  }
+  body,
+  #page_content {
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
+
+/* =========================================================================
+   Dark-mode icon filter — applied to sprite-based PNG/GIF icons that can't
+   be recolored via CSS. We only invert them in dark mode to keep them
+   legible against dark backgrounds.
+   ========================================================================= */
+[data-theme="dark"] {
+  --pma-icon-filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.95);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pma-icon-filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.95);
+  }
+}

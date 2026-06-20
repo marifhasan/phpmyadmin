@@ -1,0 +1,31 @@
+/**
+ * Tailwind theme for phpMyAdmin
+ * Entry point — compiled by @tailwindcss/cli into css/theme.css
+ *
+ * Build:  npm install && npm run build:all
+ */
+@import "tailwindcss";
+
+/* Design tokens (palette, radius, shadow) — Tailwind v4 @theme */
+@import "./src/tokens.css";
+
+/* Base reset + body/typography defaults */
+@import "./src/base.css";
+
+/* Dark mode strategy (system + manual override) */
+@import "./src/dark.css";
+
+/* Component classes (.btn, .card, .table, .form-control, ...) */
+@import "./src/components.css";
+
+/* phpMyAdmin-specific selector overrides */
+@import "./src/pma-overrides.css";
+
+/* CodeMirror editor theming */
+@import "./src/codemirror.css";
+
+/* jQuery UI overrides (dialog, datepicker, tabs, buttons) */
+@import "./src/jquery-ui.css";
+
+/* Hard RTL overrides beyond logical properties */
+@import "./src/rtl.css";

@@ -1,0 +1,411 @@
+/**
+ * Component layer — reusable UI primitives.
+ * Built as plain CSS using the --pma-* token aliases so they work in both
+ * light and dark without any Tailwind utility lookups.
+ */
+
+@layer components {
+
+  /* =========================================================================
+     Buttons
+     ========================================================================= */
+  .btn,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  button:not(.ui-button):not(.ui-dialog-titlebar-close):not(.ui-datepicker-trigger) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--pma-border-strong);
+    background-color: var(--pma-bg);
+    color: var(--pma-text);
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease,
+      border-color 0.15s ease, box-shadow 0.15s ease;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover,
+  input[type="reset"]:hover,
+  button:not(.ui-button):not(.ui-dialog-titlebar-close):hover {
+    background-color: var(--pma-surface-2);
+    border-color: var(--pma-muted);
+    text-decoration: none;
+  }
+  .btn:focus-visible,
+  input[type="button"]:focus-visible,
+  input[type="submit"]:focus-visible,
+  button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--pma-ring) 35%, transparent);
+  }
+
+  .btn-primary,
+  input[type="submit"].btn-primary,
+  button.btn-primary {
+    background-color: var(--pma-primary);
+    border-color: var(--pma-primary);
+    color: var(--pma-on-primary);
+  }
+  .btn-primary:hover,
+  input[type="submit"].btn-primary:hover,
+  button.btn-primary:hover {
+    background-color: var(--pma-primary-hover);
+    border-color: var(--pma-primary-hover);
+    color: var(--pma-on-primary);
+  }
+
+  .btn-secondary {
+    background-color: var(--pma-surface);
+    border-color: var(--pma-border);
+    color: var(--pma-text);
+  }
+  .btn-secondary:hover {
+    background-color: var(--pma-surface-2);
+  }
+
+  .btn-danger {
+    background-color: var(--pma-danger);
+    border-color: var(--pma-danger);
+    color: #fff;
+  }
+  .btn-danger:hover {
+    background-color: color-mix(in srgb, var(--pma-danger) 85%, #000);
+    border-color: color-mix(in srgb, var(--pma-danger) 85%, #000);
+  }
+
+  .btn-success {
+    background-color: var(--pma-success);
+    border-color: var(--pma-success);
+    color: #fff;
+  }
+  .btn-success:hover {
+    background-color: color-mix(in srgb, var(--pma-success) 85%, #000);
+  }
+
+  .btn-link {
+    background: transparent;
+    border-color: transparent;
+    color: var(--pma-primary);
+    padding-inline: 0.25rem;
+  }
+  .btn-link:hover {
+    background: transparent;
+    color: var(--pma-primary-hover);
+    text-decoration: underline;
+  }
+
+  .btn-sm {
+    padding: 0.2rem 0.55rem;
+    font-size: 0.75rem;
+  }
+  .btn-lg {
+    padding: 0.6rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  /* =========================================================================
+     Cards / panels
+     ========================================================================= */
+  .card {
+    background-color: var(--pma-bg);
+    border: 1px solid var(--pma-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--pma-shadow-sm);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .card-header {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--pma-border);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--pma-text);
+  }
+
+  /* =========================================================================
+     Tables (data listing)
+     ========================================================================= */
+  table.data,
+  .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: var(--pma-bg);
+    border: 1px solid var(--pma-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    font-size: 0.875rem;
+  }
+  table.data thead th,
+  .table thead th {
+    background-color: var(--pma-surface);
+    color: var(--pma-text-soft);
+    font-weight: 600;
+    text-align: start;
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--pma-border);
+    white-space: nowrap;
+  }
+  table.data tbody td,
+  .table tbody td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--pma-border);
+    color: var(--pma-text);
+    vertical-align: top;
+  }
+  table.data tbody tr:last-child td,
+  .table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  table.data tbody tr:nth-child(even) td,
+  .table tbody tr:nth-child(even) td {
+    background-color: color-mix(in srgb, var(--pma-surface) 50%, transparent);
+  }
+  table.data tbody tr:hover td,
+  .table tbody tr:hover td {
+    background-color: var(--pma-primary-soft);
+  }
+  table.data th a,
+  table.data td a {
+    color: var(--pma-primary);
+  }
+
+  /* PMA's marker for the column currently being hovered */
+  table.data th.columnaction,
+  table.data td.columnaction {
+    background-color: var(--pma-surface-2);
+  }
+
+  /* =========================================================================
+     Forms
+     ========================================================================= */
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="time"],
+  select,
+  textarea {
+    display: inline-block;
+    width: auto;
+    min-width: 6rem;
+    padding: 0.375rem 0.625rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--pma-text);
+    background-color: var(--pma-bg);
+    border: 1px solid var(--pma-border-strong);
+    border-radius: var(--radius-md);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  textarea {
+    width: 100%;
+    min-height: 5rem;
+    font-family: var(--font-mono);
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="url"]:focus,
+  input[type="tel"]:focus,
+  input[type="date"]:focus,
+  input[type="datetime-local"]:focus,
+  input[type="time"]:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--pma-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--pma-ring) 25%, transparent);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--pma-muted);
+  }
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--pma-primary);
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+  }
+  label {
+    color: var(--pma-text-soft);
+    font-weight: 500;
+  }
+  .formlabel,
+  .formelement {
+    color: var(--pma-text-soft);
+  }
+  fieldset {
+    border: 1px solid var(--pma-border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+  }
+  legend {
+    padding: 0 0.5rem;
+    color: var(--pma-text);
+    font-weight: 600;
+  }
+
+  /* =========================================================================
+     Alerts / flash messages
+     ========================================================================= */
+  .alert,
+  .notice,
+  .msg {
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    padding: 0.6rem 0.85rem;
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+  }
+  .alert-info,
+  .notice {
+    background-color: var(--pma-info-soft);
+    border-color: color-mix(in srgb, var(--pma-info) 35%, transparent);
+    color: var(--pma-text);
+  }
+  .alert-success,
+  .success {
+    background-color: var(--pma-success-soft);
+    border-color: color-mix(in srgb, var(--pma-success) 35%, transparent);
+    color: var(--pma-text);
+  }
+  .alert-warning,
+  .warning {
+    background-color: var(--pma-warning-soft);
+    border-color: color-mix(in srgb, var(--pma-warning) 35%, transparent);
+    color: var(--pma-text);
+  }
+  .alert-danger,
+  .alert-error,
+  .error,
+  .danger {
+    background-color: var(--pma-danger-soft);
+    border-color: color-mix(in srgb, var(--pma-danger) 35%, transparent);
+    color: var(--pma-text);
+  }
+
+  /* =========================================================================
+     Navigation / breadcrumb / tabs / pagination
+     ========================================================================= */
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding: 0.5rem 0;
+    color: var(--pma-muted);
+    font-size: 0.875rem;
+  }
+  .breadcrumb a {
+    color: var(--pma-primary);
+  }
+  .breadcrumb li + li::before {
+    content: "/";
+    margin-inline: 0.25rem;
+    color: var(--pma-muted);
+  }
+
+  .pagination {
+    display: inline-flex;
+    gap: 0.125rem;
+    list-style: none;
+    padding: 0;
+  }
+  .pagination a,
+  .pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid var(--pma-border);
+    border-radius: var(--radius-md);
+    color: var(--pma-text);
+    font-size: 0.8125rem;
+  }
+  .pagination a:hover {
+    background-color: var(--pma-surface-2);
+    text-decoration: none;
+  }
+  .pagination .active a,
+  .pagination .active span {
+    background-color: var(--pma-primary);
+    border-color: var(--pma-primary);
+    color: var(--pma-on-primary);
+  }
+
+  /* Tabs */
+  .tabs,
+  .tab_menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.125rem;
+    border-bottom: 1px solid var(--pma-border);
+    padding: 0;
+    margin: 0 0 1rem;
+    list-style: none;
+  }
+  .tabs li,
+  .tab_menu li {
+    margin: 0;
+  }
+  .tabs a,
+  .tab_menu a {
+    display: inline-block;
+    padding: 0.5rem 0.875rem;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    color: var(--pma-text-soft);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .tabs a:hover,
+  .tab_menu a:hover {
+    color: var(--pma-primary);
+    background-color: var(--pma-surface);
+  }
+  .tabs .active a,
+  .tab_menu .active a,
+  .tabs a.active,
+  .tab_menu a.active {
+    background-color: var(--pma-bg);
+    border-color: var(--pma-border);
+    color: var(--pma-primary);
+  }
+
+  /* =========================================================================
+     Badges / pills
+     ========================================================================= */
+  .badge,
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.1rem 0.5rem;
+    border-radius: var(--radius-full);
+    background-color: var(--pma-surface-2);
+    color: var(--pma-text-soft);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+}
