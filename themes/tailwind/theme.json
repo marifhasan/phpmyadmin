@@ -1,8 +1,0 @@
-{
-    "name": "Tailwind",
-    "version": "1.0.0",
-    "description": "Modern Tailwind CSS theme with light/dark mode for phpMyAdmin",
-    "author": "arifhas",
-    "url": "https://github.com/arifhas",
-    "supports": ["5.2"]
-}
